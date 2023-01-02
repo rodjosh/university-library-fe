@@ -1,4 +1,4 @@
-import { Button, Container, TextField } from '@mui/material';
+import { Button, Container, TextField, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
@@ -50,6 +50,10 @@ export const Login = () => {
 
   return (
     <Container sx={{ py: 2 }}>
+      <Typography variant="h4" gutterBottom sx={{ textAlign: 'center' }}>
+        University Library
+      </Typography>
+
       <form onSubmit={formik.handleSubmit}>
         <TextField
           fullWidth
@@ -78,6 +82,18 @@ export const Login = () => {
           Login
         </Button>
       </form>
+
+      <Typography variant="body1" sx={{ pt: 2 }}>
+        Test Credentials:
+        <br /> <br />
+        - Librarian: <br />
+        email: test@gmail.com <br />
+        pass: 1234
+        <br /> <br />
+        - Student: <br />
+        email: test2@gmail.com <br />
+        pass: 1234
+      </Typography>
     </Container>
   );
 };

@@ -4,6 +4,8 @@ import MenuLibrarian from '@components/organisms/Menu/MenuLibrarian';
 import MenuStudent from '@components/organisms/Menu/MenuStudent';
 
 import { useUsers } from '@hooks/user';
+import MenuItem from '@components/organisms/Menu/MenuItem';
+import { routes } from '@utils/routes';
 
 export const Menu = () => {
   const { isLibrarian, isStudent } = useUsers();
@@ -21,6 +23,8 @@ export const Menu = () => {
     >
       {isLibrarian && <MenuLibrarian />}
       {isStudent && <MenuStudent />}
+
+      <MenuItem href={routes.home} text="Logout" />
     </Box>
   );
 };

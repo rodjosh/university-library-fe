@@ -8,14 +8,9 @@ const MenuStudent = () => {
 
   return (
     <>
-      <MenuItem href={routes.studen} text="Home" />
-      <MenuItem href={routes.librarianAdd} text="Add Librarian" />
-      <MenuItem href={routes.librarianAddBook} text="Add Book" />
-      <MenuItem href={routes.librarianAddStudent} text="Add Student" />
-      <MenuItem href={routes.librarianBooks} text="Books" />
-      <MenuItem href={routes.librarianCheckoutBooks} text="Checkout Books" />
-      <MenuItem href={routes.librarianUsers} text="Users" />
-      <MenuItem href={routes.librarianStudents} text="Students" />
+      <MenuItem href={routes.student} text="Home" />
+      <MenuItem href={routes.studentBooks} text="Books" />
+      <MenuItem href={routes.studentRequestedBooks} text="Requested Books" />
     </>
   );
 };
