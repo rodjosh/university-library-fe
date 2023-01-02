@@ -1,19 +1,19 @@
 import { createContext, ReactNode, useState } from 'react';
 
-export const UserContext = createContext({});
-
 interface User {
-  id?: string;
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-  role?: 'student' | 'librarian';
+  id?: string | null;
+  first_name?: string | null;
+  last_name?: string | null;
+  email?: string | null;
+  role?: string | null;
 }
 
 interface Context {
   user?: User;
   setUser?: (user: User) => void;
 }
+
+export const UserContext = createContext<Context>({});
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User>();

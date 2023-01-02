@@ -1,8 +1,15 @@
 import { ReactNode } from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink,
+} from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000/',
+  link: new HttpLink({
+    uri: process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000/graphql',
+  }),
   cache: new InMemoryCache(),
 });
 

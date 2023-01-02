@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Roboto } from '@next/font/google';
 
-import Contexts from '@components/templates/Contexts';
+import { StyledMain } from './styles';
 
 const roboto = Roboto({
   weight: ['400', '500'],
@@ -9,11 +9,7 @@ const roboto = Roboto({
 });
 
 export const MainWrapper = ({ children }: { children: ReactNode }) => {
-  return (
-    <Contexts>
-      <main className={roboto.className}>{children}</main>
-    </Contexts>
-  );
+  return <StyledMain className={roboto.className}>{children}</StyledMain>;
 };
 
 export default MainWrapper;
