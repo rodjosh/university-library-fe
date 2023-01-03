@@ -26,9 +26,9 @@ const documents = {
     "\n  query getBook($id: String!) {\n    qBook(id: $id) {\n        id\n        title\n        genre\n        author\n        published_year\n        available_copies\n        checkout_by_user_ids\n    }\n  }\n": types.GetBookDocument,
     "\n  query getBooksRequestedByStudent($student_id: String!, $offset: Int, $limit: Int, $title: String, $author: String, $genre: String) {\n    qBooksRequestedByStudent(student_id: $student_id, offset: $offset, limit: $limit, title: $title, author: $author, genre: $genre) {\n        id\n        title\n        genre\n        author\n        published_year\n        available_copies\n        checkout_by_user_ids\n    }\n  }\n": types.GetBooksRequestedByStudentDocument,
     "\n  query getBooksRequestedByStudents($offset: Int, $limit: Int, $title: String, $author: String, $genre: String) {\n    qBooksRequestedByStudents(offset: $offset, limit: $limit, title: $title, author: $author, genre: $genre) {\n        id\n        title\n        genre\n        author\n        published_year\n        available_copies\n        checkout_by_user_ids\n    }\n  }\n": types.GetBooksRequestedByStudentsDocument,
-    "\n  query getAllUsers($offset: Int, $limit: Int) {\n    qUsers(offset: $offset, limit: $limit) {\n        id\n        first_name\n        last_name\n        role\n    }\n  }\n": types.GetAllUsersDocument,
-    "\n  query getAllStudents($offset: Int, $limit: Int) {\n    qStudents(offset: $offset, limit: $limit) {\n        id\n        first_name\n        last_name\n        role\n        requested_book_ids\n    }\n  }\n": types.GetAllStudentsDocument,
-    "\n  query getUser($id: String!) {\n    qUser(id: $id) {\n        id\n        first_name\n        role\n        requested_book_ids\n    }\n  }\n": types.GetUserDocument,
+    "\n  query getAllUsers($offset: Int, $limit: Int) {\n    qUsers(offset: $offset, limit: $limit) {\n        id\n        first_name\n        last_name\n        role\n        email\n    }\n  }\n": types.GetAllUsersDocument,
+    "\n  query getAllStudents($offset: Int, $limit: Int) {\n    qStudents(offset: $offset, limit: $limit) {\n        id\n        first_name\n        last_name\n        role\n        email\n        requested_book_ids\n    }\n  }\n": types.GetAllStudentsDocument,
+    "\n  query getUser($id: String!) {\n    qUser(id: $id) {\n        id\n        first_name\n        last_name\n        role\n        email\n        requested_book_ids\n    }\n  }\n": types.GetUserDocument,
 };
 
 /**
@@ -86,15 +86,15 @@ export function gql(source: "\n  query getBooksRequestedByStudents($offset: Int,
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query getAllUsers($offset: Int, $limit: Int) {\n    qUsers(offset: $offset, limit: $limit) {\n        id\n        first_name\n        last_name\n        role\n    }\n  }\n"): (typeof documents)["\n  query getAllUsers($offset: Int, $limit: Int) {\n    qUsers(offset: $offset, limit: $limit) {\n        id\n        first_name\n        last_name\n        role\n    }\n  }\n"];
+export function gql(source: "\n  query getAllUsers($offset: Int, $limit: Int) {\n    qUsers(offset: $offset, limit: $limit) {\n        id\n        first_name\n        last_name\n        role\n        email\n    }\n  }\n"): (typeof documents)["\n  query getAllUsers($offset: Int, $limit: Int) {\n    qUsers(offset: $offset, limit: $limit) {\n        id\n        first_name\n        last_name\n        role\n        email\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query getAllStudents($offset: Int, $limit: Int) {\n    qStudents(offset: $offset, limit: $limit) {\n        id\n        first_name\n        last_name\n        role\n        requested_book_ids\n    }\n  }\n"): (typeof documents)["\n  query getAllStudents($offset: Int, $limit: Int) {\n    qStudents(offset: $offset, limit: $limit) {\n        id\n        first_name\n        last_name\n        role\n        requested_book_ids\n    }\n  }\n"];
+export function gql(source: "\n  query getAllStudents($offset: Int, $limit: Int) {\n    qStudents(offset: $offset, limit: $limit) {\n        id\n        first_name\n        last_name\n        role\n        email\n        requested_book_ids\n    }\n  }\n"): (typeof documents)["\n  query getAllStudents($offset: Int, $limit: Int) {\n    qStudents(offset: $offset, limit: $limit) {\n        id\n        first_name\n        last_name\n        role\n        email\n        requested_book_ids\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query getUser($id: String!) {\n    qUser(id: $id) {\n        id\n        first_name\n        role\n        requested_book_ids\n    }\n  }\n"): (typeof documents)["\n  query getUser($id: String!) {\n    qUser(id: $id) {\n        id\n        first_name\n        role\n        requested_book_ids\n    }\n  }\n"];
+export function gql(source: "\n  query getUser($id: String!) {\n    qUser(id: $id) {\n        id\n        first_name\n        last_name\n        role\n        email\n        requested_book_ids\n    }\n  }\n"): (typeof documents)["\n  query getUser($id: String!) {\n    qUser(id: $id) {\n        id\n        first_name\n        last_name\n        role\n        email\n        requested_book_ids\n    }\n  }\n"];
 
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.

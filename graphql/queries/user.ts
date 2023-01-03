@@ -7,6 +7,7 @@ export const GET_USERS = gql(`
         first_name
         last_name
         role
+        email
     }
   }
 `);
@@ -18,6 +19,7 @@ export const GET_STUDENTS = gql(`
         first_name
         last_name
         role
+        email
         requested_book_ids
     }
   }
@@ -28,7 +30,9 @@ export const GET_USER = gql(`
     qUser(id: $id) {
         id
         first_name
+        last_name
         role
+        email
         requested_book_ids
     }
   }
