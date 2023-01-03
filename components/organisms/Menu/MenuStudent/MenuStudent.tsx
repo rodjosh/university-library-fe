@@ -1,9 +1,10 @@
 import MenuItem from '@components/organisms/Menu/MenuItem';
+
+import { useUsers } from '@hooks/user';
 import { routes } from '@utils/routes';
-import { useStudent } from '@hooks/user';
 
 const MenuStudent = () => {
-  const { isStudent } = useStudent();
+  const { isStudent } = useUsers();
   if (!isStudent) return null;
 
   return (

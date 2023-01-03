@@ -1,9 +1,9 @@
 import MenuItem from '@components/organisms/Menu/MenuItem';
+import { useUsers } from '@hooks/user';
 import { routes } from '@utils/routes';
-import { useLibrarian } from '@hooks/user';
 
 const MenuLibrarian = () => {
-  const { isLibrarian } = useLibrarian();
+  const { isLibrarian } = useUsers();
   if (!isLibrarian) return null;
 
   return (
