@@ -6,7 +6,7 @@ import {
   HttpLink,
 } from '@apollo/client';
 
-const client = new ApolloClient({
+export const apolloClient = new ApolloClient({
   link: new HttpLink({
     uri: process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000/graphql',
   }),
@@ -14,5 +14,5 @@ const client = new ApolloClient({
 });
 
 export const ApolloWithClient = ({ children }: { children: ReactNode }) => {
-  return <ApolloProvider client={client}>{children}</ApolloProvider>;
+  return <ApolloProvider client={apolloClient}>{children}</ApolloProvider>;
 };

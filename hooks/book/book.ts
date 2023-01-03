@@ -1,5 +1,10 @@
 import { useMutation, useQuery } from '@apollo/client';
-import { GET_ALL_BOOKS, GET_BOOK } from '@graphql/queries/book';
+import {
+  GET_ALL_BOOKS,
+  GET_BOOK,
+  GET_BOOKS_REQUESTED_BY_STUDENT,
+  GET_BOOKS_REQUESTED_BY_STUDENTS,
+} from '@graphql/queries/book';
 
 import {
   CHECKOUT_BOOK,
@@ -8,6 +13,7 @@ import {
   RETURN_BOOK,
   UPDATE_BOOK,
 } from '@graphql/mutations/book';
+import { useUsers } from '@hooks/user';
 
 interface UseBooksProps {
   offset?: number;
@@ -18,9 +24,12 @@ interface UseBooksProps {
 }
 
 export const useBooks = (props?: UseBooksProps) => {
+  const { user } = useUsers();
+
   const [createBook] = useMutation(CREATE_BOOK);
   const [updateBook] = useMutation(UPDATE_BOOK);
   const [deleteBook] = useMutation(DELETE_BOOK);
+
   const [checkoutBook] = useMutation(CHECKOUT_BOOK);
   const [returnBook] = useMutation(RETURN_BOOK);
 
@@ -34,8 +43,39 @@ export const useBooks = (props?: UseBooksProps) => {
     },
   });
 
+  const { data: booksRequestedByStudents } = useQuery(
+    GET_BOOKS_REQUESTED_BY_STUDENTS,
+    {
+      variables: {
+        offset: props?.offset,
+        limit: props?.limit,
+        title: props?.title,
+        author: props?.author,
+        genre: props?.genre,
+      },
+    }
+  );
+
+  const { data: booksRequestedByStudent } = useQuery(
+    GET_BOOKS_REQUESTED_BY_STUDENT,
+    {
+      variables: {
+        student_id: user?.id ?? '',
+        offset: props?.offset,
+        limit: props?.limit,
+        title: props?.title,
+        author: props?.author,
+        genre: props?.genre,
+      },
+      skip: !user?.id,
+    }
+  );
+
   return {
     books,
+    booksRequestedByStudent,
+    booksRequestedByStudents,
+
     createBook,
     updateBook,
     deleteBook,
@@ -45,13 +85,12 @@ export const useBooks = (props?: UseBooksProps) => {
 };
 
 export const useBook = (id?: string) => {
-  const { data: book, refetch: refetchBook } = useQuery(GET_BOOK, {
+  const { data: book } = useQuery(GET_BOOK, {
     variables: { id: id ?? '' },
     skip: !id,
   });
 
   return {
     book,
-    refetchBook,
   };
 };

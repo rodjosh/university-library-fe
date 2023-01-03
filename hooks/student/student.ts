@@ -12,7 +12,7 @@ interface UseStudentProps {
 export const useStudent = (props?: UseStudentProps) => {
   const { user, isStudent } = useUsers();
   const { books, checkoutBook } = useBooks();
-  const { book, refetchBook } = useBook(props?.book_id);
+  const { book } = useBook(props?.book_id);
 
   const router = useRouter();
 
@@ -26,7 +26,6 @@ export const useStudent = (props?: UseStudentProps) => {
 
     book,
     books,
-    refetchBook,
     checkoutBook,
   };
 };

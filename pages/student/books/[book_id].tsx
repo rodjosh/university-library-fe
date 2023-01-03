@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import UserLayout from '@components/templates/UserLayout';
 import { useStudent } from '@hooks/student';
-import { useFormik } from 'formik';
+import { routes } from '@utils/routes';
 
 const BookPage = () => {
   const router = useRouter();
@@ -12,10 +12,11 @@ const BookPage = () => {
 
   const [snackMessage, setSnackMessage] = useState<string>();
   const [snackOpen, setSnackOpen] = useState<boolean>(false);
-  const { user, book, refetchBook, checkoutBook } = useStudent({ book_id });
+  const { user, book, checkoutBook } = useStudent({
+    book_id,
+  });
 
   if (!user || !book) return null;
-
   const toggleSnack = () => setSnackOpen(!snackOpen);
 
   const checkoutBookFun = () => {
@@ -37,9 +38,7 @@ const BookPage = () => {
     checkoutBook({
       variables: { book_id: book_id, student_id: user?.id as string },
       onCompleted: () => {
-        toggleSnack();
-        refetchBook().then();
-        setSnackMessage('Book checked out correctly');
+        location.href = routes.studentBooks;
       },
     }).then();
   };

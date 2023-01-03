@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 
 interface User {
   id?: string | null;
@@ -16,11 +16,26 @@ interface Context {
 export const UserContext = createContext<Context>({});
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
+  const [loaded, setLoaded] = useState<boolean>(false);
   const [user, setUser] = useState<User>();
+
+  useEffect(() => {
+    setLoaded(true);
+    const savedUserJson = localStorage?.getItem('user');
+    setUser(savedUserJson ? JSON.parse(savedUserJson) : undefined);
+  }, []);
+
+  if (!loaded) return null;
+
+  const setUserFun = (user: User) => {
+    const json = JSON.stringify(user);
+    localStorage.setItem('user', json);
+    setUser(user);
+  };
 
   const context: Context = {
     user,
-    setUser,
+    setUser: setUserFun,
   };
 
   return (
