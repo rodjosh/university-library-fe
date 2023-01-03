@@ -21,9 +21,9 @@ const AddBookPage = () => {
     initialValues: {
       title: '',
       author: '',
-      published_year: undefined,
+      published_year: 0,
       genre: '',
-      available_copies: undefined,
+      available_copies: 0,
     },
     validationSchema,
     onSubmit: ({ title, author, published_year, genre, available_copies }) => {
