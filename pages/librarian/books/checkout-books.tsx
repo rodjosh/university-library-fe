@@ -103,7 +103,7 @@ const BooksListPage = () => {
               <TableCell align="right">{book?.available_copies}</TableCell>
 
               <TableCell align="right">
-                <Anchor href={`${routes.studentBooks}/${book?.id}`}>
+                <Anchor href={`${routes.librarianBooks}/${book?.id}`}>
                   <Button variant="contained">See Book</Button>
                 </Anchor>
               </TableCell>
