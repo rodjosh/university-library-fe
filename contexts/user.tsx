@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { routes } from '@utils/routes';
 
 interface User {
-  id?: string | null;
+  _id?: string | null;
   first_name?: string | null;
   last_name?: string | null;
   email?: string | null;
