@@ -38,7 +38,7 @@ const UsersPage = () => {
 
         <TableBody>
           {usersRes?.qUsers?.map((user) => (
-            <TableRow key={user?.id}>
+            <TableRow key={user?._id}>
               <TableCell>{user?.first_name}</TableCell>
               <TableCell align="right">{user?.last_name}</TableCell>
               <TableCell align="right">{user?.role}</TableCell>

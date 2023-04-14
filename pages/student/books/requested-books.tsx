@@ -95,7 +95,7 @@ const BookListRequestedPage = () => {
 
         <TableBody>
           {booksRequestedByStudent?.qBooksRequestedByStudent?.map((book) => (
-            <TableRow key={book?.id}>
+            <TableRow key={book?._id}>
               <TableCell>{book?.title}</TableCell>
               <TableCell align="right">{book?.author}</TableCell>
               <TableCell align="right">{book?.genre}</TableCell>
@@ -103,7 +103,7 @@ const BookListRequestedPage = () => {
               <TableCell align="right">{book?.available_copies}</TableCell>
 
               <TableCell align="right">
-                <Anchor href={`${routes.studentBooks}/${book?.id}`}>
+                <Anchor href={`${routes.studentBooks}/${book?._id}`}>
                   <Button variant="contained">See Book</Button>
                 </Anchor>
               </TableCell>

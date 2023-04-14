@@ -28,7 +28,7 @@ const BookPage = () => {
 
     if (
       book?.qBook?.checkout_by_user_ids &&
-      book?.qBook?.checkout_by_user_ids?.includes(user?.id ?? '')
+      book?.qBook?.checkout_by_user_ids?.includes(user?._id ?? '')
     ) {
       toggleSnack();
       setSnackMessage('Checkout by user ID is already taken');
@@ -36,7 +36,7 @@ const BookPage = () => {
     }
 
     checkoutBook({
-      variables: { book_id: book_id, student_id: user?.id as string },
+      variables: { book_id: book_id, student_id: user?._id as string },
       onCompleted: () => {
         location.href = routes.studentBooks;
       },

@@ -69,10 +69,10 @@ const BookPage = () => {
 
             <TableBody>
               {book?.qBook?.checkout_by_user_ids?.map((id) => {
-                if (!id || !book?.qBook?.id) return null;
+                if (!id || !book?.qBook?._id) return null;
 
                 return (
-                  <BookRequestRow key={id} id={id} book_id={book?.qBook?.id} />
+                  <BookRequestRow key={id} id={id} book_id={book?.qBook?._id} />
                 );
               })}
             </TableBody>

@@ -60,14 +60,14 @@ export const useBooks = (props?: UseBooksProps) => {
     GET_BOOKS_REQUESTED_BY_STUDENT,
     {
       variables: {
-        student_id: user?.id ?? '',
+        student_id: user?._id ?? '',
         offset: props?.offset,
         limit: props?.limit,
         title: props?.title,
         author: props?.author,
         genre: props?.genre,
       },
-      skip: !user?.id,
+      skip: !user?._id,
     }
   );
 

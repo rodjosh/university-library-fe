@@ -10,8 +10,8 @@ export const useUsers = () => {
   const [loginUser] = useMutation(LOGIN_USER);
 
   const { data: userRes } = useQuery(GET_USER, {
-    variables: { id: user?.id ?? '' },
-    skip: !user?.id,
+    variables: { id: user?._id ?? '' },
+    skip: !user?._id,
   });
 
   let isLibrarian = user?.role === 'librarian';
